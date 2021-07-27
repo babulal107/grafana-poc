@@ -1,0 +1,30 @@
+version: "3.4"
+services:
+  go-service-with-metrics:
+    image: grafana-poc
+    container_name: grafana-poc-inst
+    ports:
+      - 8080:8080
+  prometheus:
+    image: prom/prometheus:v2.9.2
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus:/etc/prometheus/
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    depends_on:
+      - go-service-with-metrics
+  grafana:
+    image: grafana/grafana:6.1.6
+    ports:
+      - 3000:3000
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    volumes:
+      - ./grafana/provisioning:/etc/grafana/provisioning
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
+    depends_on:
+      - prometheus
