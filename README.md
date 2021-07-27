@@ -1,4 +1,7 @@
 # grafana-poc
+Golang examples with Grafana integrations
+- Documentation link [Grafana](https://grafana.com/docs/grafana/latest/getting-started)
+- Documentation link [Prometheus](https://prometheus.io/docs/introduction/overview)
 
 ## Makefile
 - `make build` to build the golang binary of application
