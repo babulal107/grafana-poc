@@ -1,5 +1,6 @@
 # grafana-poc
-Golang examples with Grafana integrations
+Golang examples with Grafana integration
+- Go Gin Web Framework link [Go-Gin](https://pkg.go.dev/github.com/gin-gonic/gin)
 - Documentation link [Grafana](https://grafana.com/docs/grafana/latest/getting-started)
 - Documentation link [Prometheus](https://prometheus.io/docs/introduction/overview)
 
