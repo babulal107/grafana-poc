@@ -4,6 +4,10 @@ Golang examples with Grafana integration
 - Documentation link [Grafana](https://grafana.com/docs/grafana/latest/getting-started)
 - Documentation link [Prometheus](https://prometheus.io/docs/introduction/overview)
 
+## Used Packages
+- Prometheus gin-metrics [genglongi/gin-metrics](https://github.com/penglongli/gin-metrics)
+- Prometheus Client [prometheus/client_golang](https://github.com/prometheus/client_golang)
+
 ## Makefile
 - `make build` to build the golang binary of application
 - `make run` to run application on local
@@ -17,6 +21,9 @@ Golang examples with Grafana integration
 
 ## Health Check API
 - `http://localhost:8080/health`
+
+## Get Feeds Data API
+- `http://localhost:8080/feds`
 
 ## Check Grafana Metrics API 
 - `http://localhost:8080/metrics`

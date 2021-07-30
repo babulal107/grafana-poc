@@ -2,6 +2,7 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/grafana-poc/internal/feed/rest"
 	"github.com/grafana-poc/internal/model"
 	"github.com/penglongli/gin-metrics/ginmetrics"
 	"net/http"
@@ -9,6 +10,8 @@ import (
 
 // Init gin router & middleware
 func Init() *gin.Engine {
+
+	//go-gin web framework used
 	r := gin.Default()
 
 	// get global Monitor object
@@ -33,6 +36,11 @@ func Init() *gin.Engine {
 			Data:    make([]interface{}, 0),
 		})
 	})
+
+
+	feedHandler := rest.NewHandler()
+	// GET feeds data route
+	r.GET("/feeds", feedHandler.HandleHTTP)
 
 	return r
 }
