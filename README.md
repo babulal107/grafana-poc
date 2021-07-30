@@ -23,7 +23,7 @@ Golang examples with Grafana integration
 - `http://localhost:8080/health`
 
 ## Get Feeds Data API
-- `http://localhost:8080/feds`
+- `http://localhost:8080/feeds`
 
 ## Check Grafana Metrics API 
 - `http://localhost:8080/metrics`
