@@ -1,7 +1,9 @@
 version: "3.4"
 services:
-  go-service-with-metrics:
-    image: grafana-poc
+  golang-grafana-service:
+    build:
+      context: ./
+      dockerfile: Dockerfile
     container_name: grafana-poc-inst
     ports:
       - 8080:8080
@@ -11,11 +13,12 @@ services:
       - 9090:9090
     volumes:
       - ./prometheus:/etc/prometheus/
+      - prometheus_data:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
     depends_on:
-      - go-service-with-metrics
+      - golang-grafana-service
   grafana:
     image: grafana/grafana:6.1.6
     ports:
@@ -24,7 +27,9 @@ services:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
     volumes:
-      - ./grafana/provisioning:/etc/grafana/provisioning
-      - ./grafana/dashboards:/var/lib/grafana/dashboards
+      - grafana-storage:/var/lib/grafana
     depends_on:
       - prometheus
+volumes:
+  grafana-storage:
+  prometheus_data:
